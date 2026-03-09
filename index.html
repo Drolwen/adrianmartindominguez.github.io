@@ -29,6 +29,7 @@
     background: var(--cream);
     color: var(--text);
     overflow-x: hidden;
+    padding-top: 70px;
   }
 
   /* ─── HERO ─── */
@@ -67,7 +68,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 1.2rem 1.5rem;
     border-bottom: 1px solid rgba(200,169,110,0.2);
     position: fixed;
     top: 0;
@@ -78,13 +79,15 @@
     background-color: rgba(15, 27, 53, 0.95);
     transform: translateY(0);
     transition: transform 0.3s ease-in-out;
+    box-sizing: border-box;
   }
 
   .nav-logo {
     font-family: 'Playfair Display', serif;
     color: var(--white);
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
     letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
   .nav-logo span {
@@ -93,17 +96,19 @@
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: clamp(0.8rem, 2vw, 2rem);
     list-style: none;
+    flex-wrap: wrap;
   }
 
   .nav-links a {
     color: rgba(255,255,255,0.6);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 0.3s;
+    white-space: nowrap;
   }
 
   .nav-links a:hover { color: var(--gold); }
