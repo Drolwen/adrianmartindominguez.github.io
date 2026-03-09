@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio · Adrián Martín Domínguez</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1b35;
+    --navy-light: #1a2744;
+    --gold: #c8a96e;
+    --gold-light: #e2c98a;
+    --cream: #f7f3ec;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --green: #2d6a4f;
+    --green-light: #40916c;
+    --red: #9b2226;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo span {
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 4rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--white);
+    line-height: 1.05;
+    max-width: 800px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 500px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    padding: 2.5rem 4rem;
+    border-top: 1px solid rgba(200,169,110,0.15);
+  }
+
+  .hero-stat {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    border-right: 1px solid rgba(200,169,110,0.15);
+  }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── SECTION INTRO ─── */
+  .section-intro {
+    padding: 5rem 4rem 3rem;
+    max-width: 100%;
+    background: #fff;
+    border-top: 3px solid var(--navy);
+  }
+
+  .section-intro-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-tag::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: rgba(200,169,110,0.3);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--navy);
+    line-height: 1.2;
+    max-width: 700px;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-top: 1rem;
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ─── CASES WRAPPER ─── */
+  .cases-wrapper {
+    background: var(--cream);
+  }
+
+  /* ─── CASES ─── */
+  .cases {
+    padding: 2rem 4rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .case {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(15,27,53,0.1);
+  }
+
+  .case.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .case:last-child { border-bottom: none; }
+
+  .case-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(200,169,110,0.2);
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .case-sector {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--navy);
+    color: var(--gold);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  .case-client {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .case-url {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .case-tag {
+    font-size: 0.75rem;
+    background: rgba(15,27,53,0.06);
+    color: var(--navy);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Stats panel */
+  .case-stats {
+    background: var(--navy);
+    border-radius: 4px;
+    overflow: hidden;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .case-stats-header {
+    background: rgba(200,169,110,0.1);
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+    padding: 1.2rem 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .case-stats-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .case-stats-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .kpi {
+    padding: 1.5rem 1.8rem;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .kpi:nth-child(2n) { border-right: none; }
+  .kpi:nth-last-child(-n+2) { border-bottom: none; }
+
+  .kpi-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .kpi-value.positive { color: #52b788; }
+  .kpi-value.highlight { color: var(--gold); }
+
+  .kpi-delta {
+    font-size: 0.72rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+  }
+
+  .kpi-delta.up {
+    color: #52b788;
+    background: rgba(82,183,136,0.12);
+  }
+
+  .kpi-delta.neutral {
+    color: var(--gold);
+    background: rgba(200,169,110,0.12);
+  }
+
+  .kpi-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .kpi-highlight {
+    grid-column: 1 / -1;
+    padding: 1.5rem 1.8rem;
+    background: rgba(200,169,110,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .kpi-highlight .kpi-value {
+    font-size: 2.4rem;
+  }
+
+  .keywords-list {
+    padding: 1.2rem 1.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .keywords-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+
+  .keyword-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .keyword-item:last-child { border-bottom: none; }
+
+  .keyword-name {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .keyword-pos {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* ─── AUTOMATION SECTION ─── */
+  .automation-section {
+    background: var(--navy);
+    padding: 6rem 4rem;
+  }
+
+  .automation-section .section-intro {
+    padding: 0 0 4rem;
+    max-width: 100%;
+    background: transparent;
+    border-top: none;
+  }
+
+  .automation-section .section-tag { color: var(--gold); }
+  .automation-section .section-tag::after { background: rgba(200,169,110,0.3); }
+  .automation-section .section-title { color: var(--white); }
+
+  .automation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .auto-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,169,110,0.15);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .auto-card:hover {
+    border-color: rgba(200,169,110,0.4);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .auto-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .auto-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .auto-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .auto-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .auto-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .ewallia-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.25);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .automation-grid { grid-template-columns: 1fr; }
+    .automation-section { padding: 4rem 2rem; }
+  }
+
+  /* ─── ABOUT STRIP ─── */
+  .about-strip {
+    background: var(--navy-light);
+    padding: 5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .about-text h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .about-text p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .about-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.9rem 1.8rem;
+    letter-spacing: 0.05em;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .about-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .about-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .skill-name {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.03em;
+  }
+
+  .skill-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+  }
+
+  .skill-bar {
+    height: 2px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0;
+    transition: width 1.2s ease;
+  }
+
+  .skill-bar-fill.animated { width: var(--w); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(200,169,110,0.15);
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1rem;
+  }
+
+  .footer-brand span { color: var(--gold); }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.5rem 2rem; }
+    .nav-links { display: none; }
+    .hero-content, .hero-stats, .section-intro, .cases { padding-left: 2rem; padding-right: 2rem; }
+    .hero-stats { flex-direction: column; gap: 0; }
+    .hero-stat { border-right: none; border-bottom: 1px solid rgba(200,169,110,0.15); }
+    .case { grid-template-columns: 1fr; gap: 2rem; }
+    .about-strip { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 2rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeInUp 0.8s ease both; }
+  .hero-title { animation: fadeInUp 0.8s ease 0.15s both; }
+  .hero-subtitle { animation: fadeInUp 0.8s ease 0.3s both; }
+  .hero-stats { animation: fadeInUp 0.8s ease 0.45s both; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <nav>
+    <div class="nav-logo">Adrián Martín <span>Domínguez</span></div>
+    <ul class="nav-links">
+      <li><a href="#casos">Proyectos</a></li>
+      <li><a href="#automatizacion">Automatización</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#39585d4b5058570b4a544b795e54585055175a5654">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Desarrollo Web · SEO · Automatización IA · 2025–2026</p>
+    <h1 class="hero-title">
+      Webs que posicionan.<br>
+      <em>Sistemas que escalan.</em>
+    </h1>
+    <p class="hero-subtitle">
+      Dirijo el área Web & SEO en SAGATECH y lidero automatización e IA en EWALLIA.
+      Diseño, desarrollo y posiciono — y luego automatizo lo que se pueda automatizar.
+    </p>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">400+</span>
+      <span class="hero-stat-label">Auditorías SEO realizadas</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">+674%</span>
+      <span class="hero-stat-label">Crecimiento máximo de tráfico</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">50+</span>
+      <span class="hero-stat-label">Webs diseñadas y desarrolladas</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">n8n + IA</span>
+      <span class="hero-stat-label">Stack de automatización EWALLIA</span>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<div class="section-intro" id="casos">
+  <div class="section-intro-inner">
+    <p class="section-tag">Desarrollo Web · SEO · Datos reales de SE Ranking y Google Search Console</p>
+    <h2 class="section-title">Más de 50 webs diseñadas.<br><em>Tres con datos verificables.</em></h2>
+    <p class="section-subtitle">Del diseño y desarrollo al posicionamiento y automatización — proyectos entregados de principio a fin en sectores distintos.</p>
+  </div>
+</div>
+
+<div class="cases-wrapper">
+<div class="cases">
+
+  <!-- CASO 1: SAGATECH -->
+  <div class="case">
+    <div class="case-left">
+      <div class="case-meta">
+        <span class="case-number">01</span>
+        <span class="case-sector">IT Services</span>
+      </div>
+      <h3 class="case-client">SAGATECH<br>Servicios Informáticos</h3>
+      <p class="case-url">sagatech.es · Sevilla</p>
+      <p class="case-desc">
+        Proyecto propio — desarrollé y posicioné la web desde cero. Diseño en WordPress, arquitectura de páginas por servicio (Factorial, Holded, desarrollo software, mantenimiento web), optimización de Core Web Vitals, y plan SEO completo en SE Ranking ejecutado al 79%.
+        <br><br>
+        Keyword strategy centrada en nichos de alta intención comercial con baja competencia local: términos como "integración Factorial Sevilla" o "migración Holded Sevilla" donde llegar a #1 tiene impacto directo en captación de clientes cualificados.
+      </p>
+      <div class="case-tags">
+        <span class="case-tag">WordPress</span>
+        <span class="case-tag">Diseño web</span>
+        <span class="case-tag">SEO Técnico</span>
+        <span class="case-tag">Keyword Research</span>
+        <span class="case-tag">Core Web Vitals</span>
+        <span class="case-tag">Google Search Console</span>
+      </div>
+    </div>
+
+    <div class="case-stats">
+      <div class="case-stats-header">
+        <span class="case-stats-title">Métricas reales · SE Ranking</span>
+        <span class="case-stats-period">Mar 2025 – Mar 2026</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi kpi-highlight">
+          <span class="kpi-value highlight">+114%</span>
+          <span class="kpi-delta up">▲ 2.110 sesiones adicionales</span>
+          <span class="kpi-label">Crecimiento de sesiones totales</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value positive">2.200</span>
+          <span class="kpi-delta up">▲ 194%</span>
+          <span class="kpi-label">Clics orgánicos</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">430K</span>
+          <span class="kpi-delta neutral">+2.79%</span>
+          <span class="kpi-label">Impresiones Google</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value positive">+34</span>
+          <span class="kpi-delta up">vs. −31 perdidas</span>
+          <span class="kpi-label">Posiciones ganadas</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">48</span>
+          <span class="kpi-delta up">▲ 14 nuevas</span>
+          <span class="kpi-label">Keywords en Top 10</span>
+        </div>
+      </div>
+      <div class="keywords-list">
+        <p class="keywords-title">Top keywords · Posición Google Sevilla</p>
+        <div class="keyword-item">
+          <span class="keyword-name">integración factorial sevilla</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">migración holded sevilla</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">control horario factorial sevilla</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">seguridad wordpress sevilla</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">desarrollo software a medida sevilla</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASO 2: ASUCATE -->
+  <div class="case">
+    <div class="case-left">
+      <div class="case-meta">
+        <span class="case-number">02</span>
+        <span class="case-sector">eCommerce · Té & Infusiones</span>
+      </div>
+      <h3 class="case-client">Asucate</h3>
+      <p class="case-url">asucate.com · Sevilla</p>
+      <p class="case-desc">
+        Desarrollé la web completa de esta tienda especializada en té, infusiones y plantas medicinales, y me encargué de toda la estrategia SEO posterior. Arquitectura de categorías orientada a búsqueda (té, plantas medicinales, café, chocolates), URLs limpias, blog de contenido y optimización on-page completa.
+        <br><br>
+        El resultado más destacado: de 1.600 clics anuales a más de 12.400 — un crecimiento del 674% — con posición promedio en Google de 10.4. El tráfico orgánico representa ya el 69% del total del sitio.
+      </p>
+      <div class="case-tags">
+        <span class="case-tag">Desarrollo web</span>
+        <span class="case-tag">eCommerce SEO</span>
+        <span class="case-tag">Arquitectura de contenido</span>
+        <span class="case-tag">SEO On-page</span>
+        <span class="case-tag">Blog SEO</span>
+        <span class="case-tag">Local SEO</span>
+      </div>
+    </div>
+
+    <div class="case-stats">
+      <div class="case-stats-header">
+        <span class="case-stats-title">Métricas reales · SE Ranking</span>
+        <span class="case-stats-period">Mar 2025 – Mar 2026</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi kpi-highlight">
+          <span class="kpi-value highlight">+674%</span>
+          <span class="kpi-delta up">▲ 10.800 clics adicionales</span>
+          <span class="kpi-label">Crecimiento clics orgánicos</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value positive">12.400</span>
+          <span class="kpi-delta up">vs. 1.600 año anterior</span>
+          <span class="kpi-label">Clics anuales Google</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">2.1M</span>
+          <span class="kpi-delta neutral">+1.24%</span>
+          <span class="kpi-label">Impresiones</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value positive">10.4</span>
+          <span class="kpi-delta up">▲ +30.67%</span>
+          <span class="kpi-label">Posición promedio Google</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">14.294</span>
+          <span class="kpi-delta up">sesiones totales</span>
+          <span class="kpi-label">Tráfico anual (GA4)</span>
+        </div>
+      </div>
+      <div class="keywords-list">
+        <p class="keywords-title">Top keywords · Posición Google Sevilla</p>
+        <div class="keyword-item">
+          <span class="keyword-name">asuca / asuca sevilla</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">tienda de te en sevilla</span>
+          <span class="keyword-pos">#2</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">tisana planta medicinal</span>
+          <span class="keyword-pos">#2</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">tienda de te sevilla</span>
+          <span class="keyword-pos">#3</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">te sevilla</span>
+          <span class="keyword-pos">#5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASO 3: URBALIA -->
+  <div class="case">
+    <div class="case-left">
+      <div class="case-meta">
+        <span class="case-number">03</span>
+        <span class="case-sector">Inmobiliaria · Marketing</span>
+      </div>
+      <h3 class="case-client">Urbalia Contigo</h3>
+      <p class="case-url">urbaliacontigo.es · Bailén, Jaén</p>
+      <p class="case-desc">
+        Diseñé y desarrollé la web completa para esta agencia inmobiliaria de Bailén con servicios de venta, home staging, marketing inmobiliario y asesoramiento legal. Proyecto desde cero: sin historial de rankings ni Analytics previo. Arquitectura de servicios diferenciada, SEO local para Google Maps, blog activo y plan de marketing ejecutado al 97%.
+        <br><br>
+        Para un proyecto en sus primeros meses, las métricas de calidad son muy sólidas: CTR del 6.6% (referencia del sector ronda el 2%), posición promedio 11.3 a nivel nacional, y cero posiciones perdidas en todo el período.
+      </p>
+      <div class="case-tags">
+        <span class="case-tag">Desarrollo web</span>
+        <span class="case-tag">Local SEO</span>
+        <span class="case-tag">Google My Business</span>
+        <span class="case-tag">SEO desde cero</span>
+        <span class="case-tag">Marketing Inmobiliario</span>
+        <span class="case-tag">Blog SEO</span>
+      </div>
+    </div>
+
+    <div class="case-stats">
+      <div class="case-stats-header">
+        <span class="case-stats-title">Métricas reales · SE Ranking</span>
+        <span class="case-stats-period">Mar 2025 – Mar 2026</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi kpi-highlight">
+          <span class="kpi-value highlight">6.6%</span>
+          <span class="kpi-delta up">CTR muy por encima de la media</span>
+          <span class="kpi-label">Click-through rate orgánico</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value positive">591</span>
+          <span class="kpi-delta neutral">proyecto nuevo</span>
+          <span class="kpi-label">Clics desde Search Console</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">9.000</span>
+          <span class="kpi-delta neutral">desde 0</span>
+          <span class="kpi-label">Impresiones acumuladas</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value positive">11.3</span>
+          <span class="kpi-delta up">posición promedio</span>
+          <span class="kpi-label">Media nacional Google</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-value">0</span>
+          <span class="kpi-delta up">posiciones perdidas</span>
+          <span class="kpi-label">Pérdidas de ranking</span>
+        </div>
+      </div>
+      <div class="keywords-list">
+        <p class="keywords-title">Top keywords · Posición Google Bailén</p>
+        <div class="keyword-item">
+          <span class="keyword-name">asesoramiento legal inmobiliario</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">marketing inmobiliario bailen</span>
+          <span class="keyword-pos">#1</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">inmobiliaria bailén</span>
+          <span class="keyword-pos">#4</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">pisos en venta en bailen</span>
+          <span class="keyword-pos">#5</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-name">casas en venta en bailen</span>
+          <span class="keyword-pos">#6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /cases-wrapper -->
+
+<!-- AUTOMATIZACIONES EWALLIA -->
+<section class="automation-section" id="automatizacion">
+  <div class="section-intro">
+    <span class="ewallia-badge">⚡ EWALLIA · Automatización e IA</span>
+    <p class="section-tag">n8n · Agentes IA · Integraciones B2B</p>
+    <h2 class="section-title">Sistemas que trabajan<br>mientras tú no estás.</h2>
+  </div>
+
+  <div class="automation-grid">
+
+    <div class="auto-card">
+      <span class="auto-icon">🤖</span>
+      <h3 class="auto-title">Agentes IA para atención al cliente</h3>
+      <p class="auto-desc">
+        Implementación de agentes conversacionales basados en LLMs (GPT, Claude) para gestión automatizada de consultas, cualificación de leads y respuestas contextuales. El agente accede a la información del negocio, escala a humano cuando es necesario y registra cada interacción en el CRM.
+      </p>
+      <div class="auto-stack">
+        <span class="auto-tag">n8n</span>
+        <span class="auto-tag">GPT-4</span>
+        <span class="auto-tag">Claude</span>
+        <span class="auto-tag">Webhooks</span>
+        <span class="auto-tag">CRM</span>
+      </div>
+    </div>
+
+    <div class="auto-card">
+      <span class="auto-icon">🎯</span>
+      <h3 class="auto-title">Generación automática de leads B2B</h3>
+      <p class="auto-desc">
+        Sistema de prospección automatizada dirigido a PYMEs españolas: identificación de empresas con problemas SEO detectables, enriquecimiento de datos, generación de mensajes personalizados con IA y envío secuencial por email y LinkedIn. Diseñado y operado desde EWALLIA para clientes y uso interno.
+      </p>
+      <div class="auto-stack">
+        <span class="auto-tag">n8n</span>
+        <span class="auto-tag">IA Generativa</span>
+        <span class="auto-tag">Web Scraping</span>
+        <span class="auto-tag">Email outreach</span>
+        <span class="auto-tag">LinkedIn</span>
+      </div>
+    </div>
+
+    <div class="auto-card">
+      <span class="auto-icon">⚙️</span>
+      <h3 class="auto-title">Flujos n8n con integraciones de negocio</h3>
+      <p class="auto-desc">
+        Diseño e implementación de workflows complejos en n8n auto-alojado: sincronización entre CRMs, notificaciones inteligentes, procesamiento de formularios, automatización de reportes y pipelines de datos entre APIs. Stack orientado a reducir trabajo manual repetitivo en empresas sin equipo técnico.
+      </p>
+      <div class="auto-stack">
+        <span class="auto-tag">n8n self-hosted</span>
+        <span class="auto-tag">REST APIs</span>
+        <span class="auto-tag">Zapier-like flows</span>
+        <span class="auto-tag">Google Sheets</span>
+        <span class="auto-tag">Slack / Email</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="sobre-mi">
+  <div class="about-text">
+    <h2>Desarrollo, posiciono<br><em>y automatizo.</em></h2>
+    <p>Dirijo el área Web & SEO en SAGATECH Servicios Informáticos (Sevilla) y lidero proyectos de automatización e IA en EWALLIA. No solo ejecuto: diseño la web, la posiciono, superviso equipos y tomo decisiones técnicas y comerciales.</p>
+    <p>Cada proyecto del portfolio tiene datos reales de SE Ranking y Google Search Console. Sin estimaciones ni mockups: métricas verificables período a período, en sectores completamente distintos.</p>
+    <a href="/cdn-cgi/l/email-protection#046560766d656a36776976446369656d682a676b69" class="about-cta">
+      Contactar → <span class="__cf_email__" data-cfemail="90f1f4e2f9f1fea2e3fde2d0f7fdf1f9fcbef3fffd">[email&#160;protected]</span>
+    </a>
+  </div>
+
+  <div class="about-skills">
+    <div class="skill-row">
+      <div class="skill-info">
+        <span class="skill-name">SEO Técnico y Estratégico</span>
+        <span class="skill-pct">95%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--w: 95%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info">
+        <span class="skill-name">Auditorías SEO</span>
+        <span class="skill-pct">93%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--w: 93%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info">
+        <span class="skill-name">Google Ads / SEM</span>
+        <span class="skill-pct">88%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--w: 88%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info">
+        <span class="skill-name">Desarrollo Web (Next.js, WordPress)</span>
+        <span class="skill-pct">85%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--w: 85%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info">
+        <span class="skill-name">Google Looker Studio</span>
+        <span class="skill-pct">82%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--w: 82%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info">
+        <span class="skill-name">Automatización con n8n + IA</span>
+        <span class="skill-pct">80%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--w: 80%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Adrián Martín <span>Domínguez</span></div>
+  <div class="footer-links">
+    <a href="https://sagatech.es" target="_blank">sagatech.es</a>
+    <a href="https://linkedin.com/in/adrianmartindominguez" target="_blank">LinkedIn</a>
+    <a href="/cdn-cgi/l/email-protection#5e3f3a2c373f306c2d332c1e39333f3732703d3133">Contacto</a>
+    <a href="CV_Adrian_Martin.html">Ver CV</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll animation for cases
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.case').forEach(c => observer.observe(c));
+
+  // Skill bars animation
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEac
