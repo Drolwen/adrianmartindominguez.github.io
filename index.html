@@ -36,7 +36,7 @@
     background: var(--navy);
     min-height: 100vh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     position: relative;
     overflow: hidden;
   }
@@ -69,6 +69,15 @@
     align-items: center;
     padding: 2rem 4rem;
     border-bottom: 1px solid rgba(200,169,110,0.2);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background: var(--navy);
+    backdrop-filter: blur(10px);
+    background-color: rgba(15, 27, 53, 0.95);
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
   }
 
   .nav-logo {
@@ -664,6 +673,80 @@
     border-top: 1px solid rgba(200,169,110,0.15);
   }
 
+  /* ─── CONTACT SECTION ─── */
+  .contact-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding: 6rem 4rem;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+  }
+
+  .contact-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .contact-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .contact-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2rem;
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+  }
+
+  .contact-btn:hover {
+    background: transparent;
+    color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(200,169,110,0.2);
+  }
+
+  .contact-btn-icon {
+    font-size: 1.3rem;
+  }
+
+  .contact-btn.secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+  }
+
+  .contact-btn.secondary:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
   .footer-brand {
     font-family: 'Playfair Display', serif;
     color: var(--white);
@@ -712,18 +795,19 @@
 </head>
 <body>
 
+<!-- STICKY NAVIGATION -->
+<nav>
+  <div class="nav-logo">Adrián Martín <span>Domínguez</span></div>
+  <ul class="nav-links">
+    <li><a href="#casos">Proyectos</a></li>
+    <li><a href="#automatizacion">Automatización</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
-  <nav>
-    <div class="nav-logo">Adrián Martín <span>Domínguez</span></div>
-    <ul class="nav-links">
-      <li><a href="#casos">Proyectos</a></li>
-      <li><a href="#automatizacion">Automatización</a></li>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="mailto:adrian2smr@gmail.com">Contacto</a></li>
-    </ul>
-  </nav>
-
   <div class="hero-content">
     <p class="hero-eyebrow">Desarrollo Web · SEO · Automatización IA · 2025–2026</p>
     <h1 class="hero-title">
@@ -1081,9 +1165,6 @@
     <h2>Desarrollo, posiciono<br><em>y automatizo.</em></h2>
     <p>Dirijo el área Web & SEO en SAGATECH Servicios Informáticos (Sevilla) y lidero proyectos de automatización e IA en EWALLIA. No solo ejecuto: diseño la web, la posiciono, superviso equipos y tomo decisiones técnicas y comerciales.</p>
     <p>Cada proyecto del portfolio tiene datos reales de SE Ranking y Google Search Console. Sin estimaciones ni mockups: métricas verificables período a período, en sectores completamente distintos.</p>
-    <a href="mailto:adrian2smr@gmail.com" class="about-cta">
-      Contactar → adrian2smr@gmail.com
-    </a>
   </div>
 
   <div class="about-skills">
@@ -1132,20 +1213,58 @@
   </div>
 </section>
 
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <h2 class="contact-title">¿Hablamos?</h2>
+    <p class="contact-subtitle">Contacta conmigo por el canal que prefieras. Respondo rápido.</p>
+    
+    <div class="contact-buttons">
+      <a href="mailto:adrian2smr@gmail.com" class="contact-btn">
+        <span class="contact-btn-icon">✉️</span>
+        <span>Enviar email</span>
+      </a>
+      <a href="tel:+34633641459" class="contact-btn secondary">
+        <span class="contact-btn-icon">📞</span>
+        <span>Llamar</span>
+      </a>
+      <a href="https://wa.me/34633641459" target="_blank" class="contact-btn secondary">
+        <span class="contact-btn-icon">💬</span>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Adrián Martín <span>Domínguez</span></div>
   <div class="footer-links">
     <a href="https://sagatech.es" target="_blank">sagatech.es</a>
     <a href="https://linkedin.com/in/adrianmartindominguez" target="_blank">LinkedIn</a>
-    <a href="mailto:adrian2smr@gmail.com">Email</a>
-    <a href="tel:+34633641459">Llamada</a>
-    <a href="https://wa.me/34633641459" target="_blank">WhatsApp</a>
     <a href="CV_Adrian_Martin.html">Ver CV</a>
   </div>
 </footer>
 
 <script>
+  // Hide/Show navbar on scroll
+  let lastScrollTop = 0;
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > lastScrollTop) {
+      // Scroll DOWN - hide navbar
+      nav.style.transform = 'translateY(-100%)';
+    } else {
+      // Scroll UP - show navbar
+      nav.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
+
   // Scroll animation for cases
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
