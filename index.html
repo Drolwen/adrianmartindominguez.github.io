@@ -36,11 +36,9 @@
     background: var(--navy);
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto 1fr auto;
     position: relative;
     overflow: hidden;
-    margin-top: -70px;
-    padding-top: 70px;
   }
 
   .hero::before {
@@ -69,18 +67,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid rgba(200,169,110,0.2);
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
-    height: 70px;
     z-index: 999;
     background: var(--navy);
     backdrop-filter: blur(10px);
     background-color: rgba(15, 27, 53, 0.95);
-    transform: translateY(0);
-    transition: transform 0.3s ease-in-out;
     box-sizing: border-box;
   }
 
@@ -802,19 +797,18 @@
 </head>
 <body>
 
-<!-- STICKY NAVIGATION -->
-<nav>
-  <div class="nav-logo">Adrián Martín <span>Domínguez</span></div>
-  <ul class="nav-links">
-    <li><a href="#casos">Proyectos</a></li>
-    <li><a href="#automatizacion">Automatización</a></li>
-    <li><a href="#sobre-mi">Sobre mí</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
-
 <!-- HERO -->
 <section class="hero">
+  <nav>
+    <div class="nav-logo">Adrián Martín <span>Domínguez</span></div>
+    <ul class="nav-links">
+      <li><a href="#casos">Proyectos</a></li>
+      <li><a href="#automatizacion">Automatización</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
   <div class="hero-content">
     <p class="hero-eyebrow">Desarrollo Web · SEO · Automatización IA · 2025–2026</p>
     <h1 class="hero-title">
